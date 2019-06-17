@@ -3,4 +3,5 @@ export default {
   message: '',
   apiCallsInProgress: 0,
   charities: [],
+  payments: [],
 }

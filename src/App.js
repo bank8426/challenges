@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as charityActions from './redux/actions/charityActions';
+import * as paymentActions from './redux/actions/paymentActions';
 import styled from 'styled-components';
 import fetch from 'isomorphic-fetch';
 import { bindActionCreators } from 'redux'
-import { summaryDonations } from './helpers';
-
 
 const Card = styled.div`
   margin: 10px;
@@ -18,6 +17,7 @@ function mapStateToProps(state) {
     loading: state.apiCallsInProgress > 0,
     donate: state.donate,
     message: state.message,
+    payments: state.payments,
   };
 }
 
@@ -25,6 +25,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       loadCharities: bindActionCreators(charityActions.loadCharities, dispatch),
+      loadPayments: bindActionCreators(paymentActions.loadPayments, dispatch),
     },
     dispatch,
   };
@@ -42,21 +43,15 @@ export default connect(mapStateToProps,mapDispatchToProps)(
 
     componentDidMount() {
       const { charities, actions } = this.props;
-      const self = this;
       if (charities.length === 0) {
         actions.loadCharities().catch(error => {
           alert('Loading charities failed' + error);
         });
       }
 
-      fetch('http://localhost:3001/payments')
-        .then(function(resp) { return resp.json() })
-        .then(function(data) {
-          self.props.dispatch({
-            type: 'UPDATE_TOTAL_DONATE',
-            amount: summaryDonations(data.map((item) => (item.amount))),
-          });
-        })
+      actions.loadPayments().catch(error => {
+        alert('Loading payments failed' + error);
+      })
     }
 
     render() {
