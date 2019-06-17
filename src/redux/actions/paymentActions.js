@@ -32,7 +32,6 @@ export function loadPayments() {
 
 export function savePayments(id, amount, currency) {
   return function(dispatch) {
-    dispatch(beginApiCall());
     return paymentApi
       .savePayments({ charitiesId: id, amount, currency })
       .then(function() {
