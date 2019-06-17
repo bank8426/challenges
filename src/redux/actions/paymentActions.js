@@ -6,8 +6,12 @@ export function loadPaymentsSuccess(payments) {
   return { type: types.LOAD_PAYMENTS_SUCCESS, payments };
 }
 
-export function updateTotalDonate(payments) {
-  return { type: types.UPDATE_TOTAL_DONATE, amount: summaryDonations(payments.map((item) => (item.amount))) };
+export function updateTotalDonate(amount) {
+  return { type: types.UPDATE_TOTAL_DONATE, amount };
+}
+
+export function updateMessage(message) {
+  return { type: types.UPDATE_MESSAGE, message };
 }
 
 export function loadPayments() {
@@ -17,11 +21,26 @@ export function loadPayments() {
       .getPayments()
       .then(payments => {
         dispatch(loadPaymentsSuccess(payments));
-        dispatch(updateTotalDonate(payments));
+        dispatch(updateTotalDonate(summaryDonations(payments.map((item) => (item.amount)))));
       })
       .catch(error => {
         dispatch(apiCallError(error));
         throw error;
+      });
+  };
+}
+
+export function savePayments(id, amount, currency) {
+  return function(dispatch) {
+    dispatch(beginApiCall());
+    return paymentApi
+      .savePayments({ charitiesId: id, amount, currency })
+      .then(function() {
+        dispatch(updateTotalDonate(amount));
+        dispatch(updateMessage(`Thanks for donate ${amount}!`));
+        setTimeout(function() {
+          dispatch(updateMessage(''));
+        }, 2000);
       });
   };
 }

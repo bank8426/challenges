@@ -6,3 +6,13 @@ export function getPayments() {
     .then(handleResponse)
     .catch(handleError);
 }
+
+export function savePayments(payment) {
+  return fetch(baseUrl, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(payment),
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}
