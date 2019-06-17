@@ -1,17 +1,11 @@
 import * as types from './actionTypes';
 import * as paymentApi from '../../api/paymentApi';
 import { beginApiCall, apiCallError } from './apiStatusActions';
+import { updateTotalDonate } from './donateActions';
+import { updateMessage} from './messageAction';
 import { summaryDonations } from '../../helpers';
 export function loadPaymentsSuccess(payments) {
   return { type: types.LOAD_PAYMENTS_SUCCESS, payments };
-}
-
-export function updateTotalDonate(amount) {
-  return { type: types.UPDATE_TOTAL_DONATE, amount };
-}
-
-export function updateMessage(message) {
-  return { type: types.UPDATE_MESSAGE, message };
 }
 
 export function loadPayments() {
