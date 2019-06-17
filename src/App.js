@@ -56,6 +56,7 @@ export default connect((state) => state)(
         return (
           <Card key={i}>
             <p>{item.name}</p>
+            <img src={process.env.IMAGES_PATH + item.image} />
             {payments}
             <button onClick={handlePay.call(self, item.id, self.state.selectedAmount, item.currency)}>Pay</button>
           </Card>
