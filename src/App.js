@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as charityActions from './redux/actions/charityActions';
 import styled from 'styled-components';
 import fetch from 'isomorphic-fetch';
-
+import { bindActionCreators } from 'redux'
 import { summaryDonations } from './helpers';
 
 
@@ -11,23 +12,42 @@ const Card = styled.div`
   border: 1px solid #ccc;
 `;
 
-export default connect((state) => state)(
+function mapStateToProps(state) {
+  return {
+    charities: state.charities,
+    loading: state.apiCallsInProgress > 0,
+    donate: state.donate,
+    message: state.message,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      loadCharities: bindActionCreators(charityActions.loadCharities, dispatch),
+    },
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(
   class App extends Component {
     constructor(props) {
       super();
 
       this.state = {
-        charities: [],
         selectedAmount: 10,
       };
     }
 
     componentDidMount() {
+      const { charities, actions } = this.props;
       const self = this;
-      fetch('http://localhost:3001/charities')
-        .then(function(resp) { return resp.json(); })
-        .then(function(data) {
-          self.setState({ charities: data }) });
+      if (charities.length === 0) {
+        actions.loadCharities().catch(error => {
+          alert('Loading charities failed' + error);
+        });
+      }
 
       fetch('http://localhost:3001/payments')
         .then(function(resp) { return resp.json() })
@@ -41,7 +61,7 @@ export default connect((state) => state)(
 
     render() {
       const self = this;
-      const cards = this.state.charities.map(function(item, i) {
+      const cards = this.props.charities.map(function(item, i) {
         const payments = [10, 20, 50, 100, 500].map((amount, j) => (
           <label key={j}>
             <input
@@ -52,7 +72,7 @@ export default connect((state) => state)(
               }} /> {amount}
           </label>
         ));
-
+        
         return (
           <Card key={i}>
             <p>{item.name}</p>
@@ -76,9 +96,15 @@ export default connect((state) => state)(
       return (
         <div>
           <h1>Tamboon React</h1>
-          <p>All donations: {donate}</p>
-          <p style={style}>{message}</p>
-          {cards}
+          {this.props.loading ? (
+            <div>Loading</div>
+          ) : (
+            <>
+              <p>All donations: {donate}</p>
+              <p style={style}>{message}</p>
+              {cards}
+            </>
+          )}
         </div>
       );
     }

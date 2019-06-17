@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const IMAGES_PATH = process.env.IMAGES_PATH || '/images/';
+const API_PATH = process.env.API_PATH || 'http://localhost:3001';
 
 const config = {
   entry: './src/index.js',
@@ -25,6 +26,7 @@ const config = {
     // This makes it possible for us to safely use env vars on our code
     new webpack.DefinePlugin({
       'process.env.IMAGES_PATH': JSON.stringify(IMAGES_PATH),
+      'process.env.API_PATH': JSON.stringify(API_PATH),
     }),
   ],
 
