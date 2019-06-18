@@ -5,6 +5,7 @@ import apiCallsInProgress from './apiStatusReducer';
 import charities from './charityReducer';
 import payments from './paymentReducer';
  
+//bundle all reducer
 const rootReducer = combineReducers({
   donate,
   message,

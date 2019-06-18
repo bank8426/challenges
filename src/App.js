@@ -25,7 +25,7 @@ function mapDispatchToProps(dispatch) {
     actions: {
       loadCharities: bindActionCreators(charityActions.loadCharities, dispatch),
       loadPayments: bindActionCreators(paymentActions.loadPayments, dispatch),
-      savePayments: bindActionCreators(paymentActions.savePayments, dispatch),
+      savePayment: bindActionCreators(paymentActions.savePayment, dispatch),
     },
   };
 }
@@ -55,7 +55,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(
 
     render() {
       const handlePay = (id, amount, currency) => {
-        this.props.actions.savePayments(id, amount, currency).catch(error => {
+        this.props.actions.savePayment(id, amount, currency).catch(error => {
           alert('Saving payments failed' + error);
         })
       }

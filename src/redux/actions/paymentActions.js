@@ -4,10 +4,21 @@ import { beginApiCall, apiCallError } from './apiStatusActions';
 import { updateTotalDonate } from './donateActions';
 import { updateMessage} from './messageAction';
 import { summaryDonations } from '../../helpers';
+
+/**
+* Sets payments information to the store.
+* @redux
+* @reduxActionCreator LOAD_PAYMENTS_SUCCESS
+* @param {array} payments - array of payments object
+*/
 export function loadPaymentsSuccess(payments) {
   return { type: types.LOAD_PAYMENTS_SUCCESS, payments };
 }
 
+/**
+* Make api call to get payments information and update payments in store.
+* @redux
+*/
 export function loadPayments() {
   return function(dispatch) {
     dispatch(beginApiCall());
@@ -15,6 +26,7 @@ export function loadPayments() {
       .getPayments()
       .then(payments => {
         dispatch(loadPaymentsSuccess(payments));
+        //summary all payments before update total donation
         dispatch(updateTotalDonate(summaryDonations(payments.map((item) => (item.amount)))));
       })
       .catch(error => {
@@ -24,10 +36,15 @@ export function loadPayments() {
   };
 }
 
-export function savePayments(id, amount, currency) {
+/**
+* Make api call to save new payment information ,
+* update total donations and show message.
+* @redux
+*/
+export function savePayment(id, amount, currency) {
   return function(dispatch) {
     return paymentApi
-      .savePayments({ charitiesId: id, amount, currency })
+      .savePayment({ charitiesId: id, amount, currency })
       .then(function() {
         dispatch(updateTotalDonate(amount));
         dispatch(updateMessage(`Thanks for donate ${amount}!`));
