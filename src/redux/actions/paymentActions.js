@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import * as paymentApi from '../../api/paymentApi';
 import { beginApiCall, apiCallError } from './apiStatusActions';
 import { updateTotalDonate } from './donateActions';
-import { updateMessage} from './messageAction';
+import { updateMessage} from './messageActions';
 import { summaryDonations } from '../../helpers';
 
 /**
@@ -40,6 +40,9 @@ export function loadPayments() {
 * Make api call to save new payment information ,
 * update total donations and show message.
 * @redux
+* @param {number} id - charity id
+* @param {number} amount - donate amount 
+* @param {string} currency - country currency
 */
 export function savePayment(id, amount, currency) {
   return function(dispatch) {
