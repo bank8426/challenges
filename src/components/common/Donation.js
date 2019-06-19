@@ -7,7 +7,7 @@ const StyledDonation = styled.p`
 const Donation = ({donate}) => {
   return (
     <StyledDonation>
-      All donations: {donate}
+      All donations: {donate.toLocaleString()} THB
     </StyledDonation>
   )
 }
