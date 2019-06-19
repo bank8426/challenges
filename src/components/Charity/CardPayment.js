@@ -19,6 +19,15 @@ const StyledPaymentList = styled.div`
   display: grid;
   grid-template-columns: repeat(5,1fr);
   padding: 0 100px;
+  @media (max-width: 1280px) {
+    padding: 0 50px;
+  }
+  @media (max-width: 1024px) {
+    padding: 0px;
+  }
+  @media (max-width: 768px) {
+    padding: 0 80px;
+  }
 `;
 
 const StyledHeader = styled.h2`
@@ -35,6 +44,10 @@ const StyledCloseButton = styled.span`
   padding: 1px 8px;
   color: #1b53f2;
   font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   &:hover{
     color: white;
@@ -50,8 +63,8 @@ const StyledPayButton = styled.button`
 const CardPayment = ({index,savePayment,currency,onClose}) => {
   const payments = [10, 20, 50, 100, 500];
   const [selectedAmount, setSelectedAmount] = useState(payments[0])
-  const handlePay = (id, amount, currency) => {
-    savePayment(id, amount, currency).catch(error => {
+  const handlePay = () => {
+    savePayment(index, selectedAmount, currency).catch(error => {
       alert('Saving payments failed' + error);
     })
   }
@@ -65,11 +78,12 @@ const CardPayment = ({index,savePayment,currency,onClose}) => {
             <RadioButton key={j}
               name={`payment${index}`} 
               handleClick={() => {setSelectedAmount(amount)}} 
-              displayMessage={amount} checked={amount===selectedAmount}/>
+              displayMessage={amount} 
+              checked={amount===selectedAmount}/>
           ))
         }
       </StyledPaymentList>
-      <StyledPayButton className='primary' onClick={() => handlePay(index, selectedAmount, currency)}>Pay</StyledPayButton>
+      <StyledPayButton className='primary' onClick={() => handlePay()}>Pay</StyledPayButton>
     </StyledCardPayment>
   )
 }

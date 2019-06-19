@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import styled from 'styled-components';
 import CardPayment from './CardPayment';
 const StyledCard = styled.div`
@@ -18,14 +18,42 @@ const StyledImg = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  @media (max-width: 1366px) {
+    width: 600px;
+    height: 275px;
+  }
+  @media (max-width: 1280px) {
+    width: 480px;
+    height: 230px;
+  }
+  @media (max-width: 1024px) {
+    width: 385px;
+    height: 195px;
+  }
+  @media (max-width: 834px) {
+    width: 345px;
+    height: 175px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 300px;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    height: 250px;
+  }
 `;
 
-const StyledH2 = styled.h2`
+const StyledH3 = styled.h3`
   margin: 1em 0em 1em 1em;
 `;
 
 const StyledButton = styled.button`
   margin: auto 1em auto 0;
+  @media (max-width: 834px) and (min-width: 768px) {
+    margin: 0.5em 0.5em 0.5em 0;
+    }
 `;
 
 const StyledNameLabel = styled.div`
@@ -33,16 +61,15 @@ const StyledNameLabel = styled.div`
   grid-template-columns: 1fr max-content;
 `;
 
-const Card = ({item}) => {
-  const [displayPayment, setDisplayPayment] = useState(false)
+const Card = ({item,selectedCharity,setSelectCharity}) => {
   return (
     <StyledCard>
       <StyledImg src={process.env.IMAGES_PATH + item.image}/>
       <StyledNameLabel>
-        <StyledH2>{item.name}</StyledH2>
-        <StyledButton className='primary' onClick={() => setDisplayPayment(true) }>Donate</StyledButton>
+        <StyledH3>{item.name}</StyledH3>
+        <StyledButton className='primary' onClick={() => setSelectCharity(item.id) }>Donate</StyledButton>
       </StyledNameLabel>
-      { displayPayment ? <CardPayment index={item.id} currency={item.currency} onClose={() => setDisplayPayment(false)}/> : null }
+      { selectedCharity===item.id ? <CardPayment index={item.id} currency={item.currency} onClose={() => setSelectCharity(0)}/> : null }
     </StyledCard>
   )
 }

@@ -9,11 +9,35 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  h1 {
+    @media (max-width: 1024px) {
+      font-size: 1.5em;
+    }
+  }
+
+  h2 {
+    @media (max-width: 1024px) {
+      font-size: 1.1em;
+    }
+    @media (max-width: 834px) {
+      font-size: 1em;
+    }
+    @media (max-width: 768px) {
+      font-size: 1.2em;
+    }
+  }
+
+  h3 {
+    @media (max-width: 1024px) {
+      font-size: 0.85em;
+    }
+  }
+
   button {
     background: white;
     border: 2px solid;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 1em;
     cursor: pointer;
     padding: 5px 10px;
     &:hover 
@@ -21,6 +45,10 @@ export const GlobalStyles = createGlobalStyle`
         color: white;
         background-color: black;
         border-color: black;
+    }
+
+    @media (max-width: 1024px) and (min-width: 768px) {
+      font-size: 0.8em;
     }
   }
 
