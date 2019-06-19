@@ -8,16 +8,7 @@ import Donation from './common/Donation';
 import Header from './common/Header';
 import Spinner from './common/Spinner';
 import CharityList from './Charity/CharityList';
-import { createGlobalStyle } from 'styled-components';
-const GlobalStyles = createGlobalStyle`
-  body {
-    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap');
-    font-family: 'Nunito Sans', sans-serif;
-    color: #57586D;
-    margin: 0;
-    padding: 0;
-  }
-`
+import { GlobalStyles } from '../styles/global';
 class App extends Component {
   componentDidMount() {
     const { charities, loadCharities , loadPayments } = this.props;
