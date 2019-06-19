@@ -34,8 +34,8 @@ class App extends Component {
         ) : (
           <>
             <Donation donate={donate} />
-            <Message message={message}/>
             <CharityList charities={charities}/>
+            <Message message={message}/>
           </>
         )}
       </>
