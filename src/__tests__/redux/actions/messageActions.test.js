@@ -5,10 +5,13 @@ describe('addMessage', () => {
   it('should create a ADD_MESSAGE action', () => {
     //arrange
     const message = 'Thank for donation'
-    const id = 1
+    const id = 1;
+    const isErrorMessage = false;
     const expectedAction = {
       type: types.ADD_MESSAGE,
-      message,id,
+      message,
+      id,
+      isErrorMessage,
     };
     
     //act

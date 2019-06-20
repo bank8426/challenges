@@ -23,9 +23,10 @@ it('Should handle add message', function() {
   const store = createStore(rootReducer, initialState);
   const message = 'Thank you for donation';
   const id = 1;
-  const expected = [{message,id}] 
+  const isErrorMessage = false;
+  const expected = [{message,id,isErrorMessage}] 
   // act
-  const action = messageActions.addMessage(message,id);
+  const action = messageActions.addMessage(message,id,isErrorMessage);
   store.dispatch(action);
 
   // assert

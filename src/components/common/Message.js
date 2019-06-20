@@ -13,7 +13,7 @@ const StyledMessage = styled.p`
   font-weight: bold;
   font-size: 16px;
   text-align: center;
-  background: #2F80ED;
+  background: ${props => props.isErrorMessage ? '#EB5757' : '#2F80ED' } ;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
   padding:10px;
   &:nth-child(n+2) {
@@ -45,7 +45,7 @@ const StyledMessage = styled.p`
     0% {
       -webkit-transform: translateX(100%);
       transform: translateX(100%);
-      
+
     }
     20% {
       -webkit-transform: translateX(0);
@@ -64,9 +64,9 @@ const Message = ({messages}) => {
   return (
     <StyledContainer>
       { 
-        messages.map((message) => (
-          <StyledMessage key={message.id}>
-            {message.message}
+        messages.map(({id,message,isErrorMessage}) => (
+          <StyledMessage key={id} isErrorMessage={isErrorMessage}>
+            {message}
           </StyledMessage>
         ))
       }

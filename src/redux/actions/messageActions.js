@@ -7,9 +7,10 @@ import * as types from './actionTypes';
 * @param {string} message - add message to display
 * @param {number} timespan - millisecond that message display
 * @param {number} id - message id
+* @param {boolean} isErrorMessage - boolean indicate error message
 */
-export function addMessage(message, id) {
-  return { type: types.ADD_MESSAGE , message ,id };
+export function addMessage(message, id , isErrorMessage=false) {
+  return { type: types.ADD_MESSAGE , message ,id ,isErrorMessage };
 }
 
 /**
