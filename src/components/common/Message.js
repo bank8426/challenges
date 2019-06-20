@@ -19,6 +19,45 @@ const StyledMessage = styled.p`
   &:nth-child(n+2) {
     margin-top: 0em;
   }
+  visibility: visible;
+  -webkit-animation: messageIn 2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: messageIn 2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  
+  @-webkit-keyframes messageIn {
+    0% {
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+      
+    }
+    20% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    80% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+  @keyframes messageIn {
+    0% {
+      -webkit-transform: translateX(100%);
+      transform: translateX(100%);
+      
+    }
+    20% {
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+    80% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
 `;
 
 const Message = ({message}) => {

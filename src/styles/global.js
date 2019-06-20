@@ -40,13 +40,23 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 1em;
     cursor: pointer;
     padding: 5px 10px;
+    -webkit-transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     &:hover 
-        {
-        color: white;
-        background-color: black;
-        border-color: black;
+    {
+      color: white;
+      background-color: black;
+      border-color: black;
     }
-
+    &:active {
+      color: rgba(0,0,0,0.5);
+      background-color: black;
+      border-color: black;
+    }
     @media (max-width: 1024px) and (min-width: 768px) {
       font-size: 0.8em;
     }
@@ -54,9 +64,15 @@ export const GlobalStyles = createGlobalStyle`
 
   button.primary{
     border-color: #1b53f2;
+    background-color: white;
     color: #1b53f2;
     &:hover {
-      color: #fff;
+      color: white;
+      background-color: #0069d9;
+      border-color: #0062cc;
+    }
+    &:active {
+      color: rgba(255, 255, 255, 0.5);
       background-color: #0069d9;
       border-color: #0062cc;
     }
