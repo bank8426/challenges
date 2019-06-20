@@ -60,14 +60,15 @@ const StyledMessage = styled.p`
   }
 `;
 
-const Message = ({message}) => {
+const Message = ({messages}) => {
   return (
     <StyledContainer>
-      { message 
-        ? 
-        <StyledMessage>
-          {message}
-        </StyledMessage> : null
+      { 
+        messages.map((message, i) => (
+          <StyledMessage key={i}>
+            {message.message}
+          </StyledMessage>
+        ))
       }
     </StyledContainer>
 

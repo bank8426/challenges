@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import * as paymentApi from '../../api/paymentApi';
 import { beginApiCall, apiCallError } from './apiStatusActions';
 import { updateTotalDonate } from './donateActions';
-import { updateMessage} from './messageActions';
+import { addMessage,removeMessageById } from './messageActions';
 import { summaryDonations } from '../../helpers';
 
 /**
@@ -48,11 +48,11 @@ export function savePayment(id, amount, currency) {
   return function(dispatch) {
     return paymentApi
       .savePayment({ charitiesId: id, amount, currency })
-      .then(function() {
+      .then(function(data) {
         dispatch(updateTotalDonate(amount));
-        dispatch(updateMessage(`Thanks for donate ${amount} ${currency}!`));
+        dispatch(addMessage(`Thanks for donate ${amount} ${currency}!`,data.id));
         setTimeout(function() {
-          dispatch(updateMessage(''));
+          dispatch(removeMessageById(data.id));
         }, 2000);
       });
   };

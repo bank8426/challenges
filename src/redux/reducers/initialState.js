@@ -4,7 +4,7 @@ export default {
   //total donation
   donate: 0,
   //notify messagge
-  message: '',
+  messages: [],
   //array of charities information
   charities: [],
   //array of payments information

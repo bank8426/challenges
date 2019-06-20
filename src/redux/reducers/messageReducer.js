@@ -6,10 +6,12 @@ import initialState from './initialState';
    * @redux
    * @reduxReducer
    */
-export default function messageReducer(state = initialState.message, action) {
+export default function messageReducer(state = initialState.messages, action) {
   switch (action.type) {
-    case types.UPDATE_MESSAGE:
-      return action.message
+    case types.ADD_MESSAGE:
+      return [...state, {id : action.id, message : action.message}]
+    case types.REMOVE_MESSAGE_BY_ID:
+      return state.filter(message => message.id !== action.id )
     default: return state;
   }
 }

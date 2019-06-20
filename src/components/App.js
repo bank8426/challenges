@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const {donate,message,charities,isLoading} = this.props;
+    const {donate,messages,charities,isLoading} = this.props;
     return (
       <>
         <GlobalStyles />
@@ -35,7 +35,7 @@ class App extends Component {
           <>
             <Donation donate={donate} />
             <CharityList charities={charities}/>
-            <Message message={message}/>
+            <Message messages={messages}/>
           </>
         )}
       </>
@@ -48,7 +48,7 @@ function mapStateToProps(state) {
     charities: state.charities,
     isLoading: state.apiCallsInProgress > 0,
     donate: state.donate,
-    message: state.message,
+    messages: state.messages,
   };
 }
 
