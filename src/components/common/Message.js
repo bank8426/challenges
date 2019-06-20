@@ -64,8 +64,8 @@ const Message = ({messages}) => {
   return (
     <StyledContainer>
       { 
-        messages.map((message, i) => (
-          <StyledMessage key={i}>
+        messages.map((message) => (
+          <StyledMessage key={message.id}>
             {message.message}
           </StyledMessage>
         ))
