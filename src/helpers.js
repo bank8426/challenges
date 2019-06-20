@@ -5,5 +5,6 @@
  * @return {number} total - total donation
  */
 export const summaryDonations = (donations) => (
-  donations.reduce((accumulator, value) => (accumulator + (isNaN(value) ? 0 : value)))
+  donations.reduce((accumulator, value) => 
+    ( accumulator + (typeof value === 'number' && isFinite(value)  ? value : 0)))
 );

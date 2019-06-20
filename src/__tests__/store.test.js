@@ -18,16 +18,49 @@ it('Should handle update donation', function() {
   expect(updatedDonation).toEqual(amount);
 });
 
-it('Should handle update message', function() {
+it('Should handle add message', function() {
   // arrange
   const store = createStore(rootReducer, initialState);
   const message = 'Thank you for donation';
-
+  const id = 1;
+  const expected = [{message,id}] 
   // act
-  const action = messageActions.updateMessage(message);
+  const action = messageActions.addMessage(message,id);
   store.dispatch(action);
 
   // assert
-  const updatedMessage = store.getState().message;
-  expect(updatedMessage).toEqual(message);
+  const addedMessages = store.getState().messages;
+  expect(addedMessages).toEqual(expected);
+});
+
+it('Should handle remove message', function() {
+  // arrange
+  const store = createStore(rootReducer, 
+    {...initialState , messages : [
+      {
+        id : 1,
+        message : 'Hello 1',
+      }], 
+    });
+  const id = 1;
+  const expected = [] 
+  // act
+  const action = messageActions.removeMessageById(id);
+  store.dispatch(action);
+
+  // assert
+  const addedMessages = store.getState().messages;
+  expect(addedMessages).toEqual(expected);
+});
+
+describe('INITIAL_STATE', () => {
+  it('is correct', () => {
+    const expectedInitialState = { apiCallsInProgress: 0,
+      donate: 0,
+      messages: [],
+      charities: [],
+      payments: []};
+
+    expect(initialState).toEqual(expectedInitialState);
+  });
 });

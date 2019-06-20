@@ -10,9 +10,12 @@ const middleware = [thunk];
 const mockStore = configureMockStore(middleware);
 
 describe('Async Actions', () => {
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
   describe('Load charities Thunk', () => {
     it('should create BEGIN_API_CALL and LOAD_CHARITIES_SUCCESS when loading charities', () => {
-      
       fetchMock.mock('*', {
         body: charities,
         headers: { 'content-type': 'application/json' },
@@ -24,9 +27,26 @@ describe('Async Actions', () => {
       ];
 
       const store = mockStore({ charities: [] });
-      return store.dispatch(charityActions.loadCharities()).then(() => {
+      store.dispatch(charityActions.loadCharities()).then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });
+    });
+
+    it('should create BEGIN_API_CALL and API_CALL_ERROR when loading charities fail', async () => {
+      fetchMock.mock('*', 404);
+      const expectedActions = [
+        { type: types.BEGIN_API_CALL },
+        { type: types.API_CALL_ERROR },
+      ];
+
+      const store = mockStore({ charities: [] });
+      try {
+        await store.dispatch(charityActions.loadCharities())
+      }
+      catch (e) {
+      
+      }
+      expect(store.getActions()).toEqual(expectedActions);
     });
   });
 });

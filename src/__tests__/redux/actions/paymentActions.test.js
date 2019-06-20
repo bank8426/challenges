@@ -30,30 +30,51 @@ describe('Async Actions', () => {
       ];
       
       const store = mockStore({ payments: [] });
-      return store.dispatch(paymentActions.loadPayments()).then(() => {
+      store.dispatch(paymentActions.loadPayments()).then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });
+    });
+
+    it('should create BEGIN_API_CALL and API_CALL_ERROR when loading payments fail', async () => {
+      fetchMock.mock('*', 404);
+      const expectedActions = [
+        { type: types.BEGIN_API_CALL },
+        { type: types.API_CALL_ERROR },
+      ];
+
+      const store = mockStore({ charities: [] });
+      try {
+        await store.dispatch(paymentActions.loadPayments())
+      }
+      catch (e) {
+      
+      }
+      expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   describe('Save payments Thunk', () => {
-    it('should create UPDATE_TOTAL_DONATE and UPDATE_MESSAGE when savePayment', () => {
+    jest.useFakeTimers();
+    it('should create UPDATE_TOTAL_DONATE , ADD_MESSAGE and REMOVE_MESSAGE_BY_ID when savePayment', () => {
+      const charityId = 1
+      const id = 1;
+      const amount = 10
+      const currency = 'THB'
+      const message = `Thanks for donate ${amount} ${currency}!`
+      const expectedActions = [
+        {type : types.UPDATE_TOTAL_DONATE , amount},
+        {type : types.ADD_MESSAGE , message , id},
+        {type : types.REMOVE_MESSAGE_BY_ID , id},
+      ];
+      
       fetchMock.mock('*', {
-        body: payments,
+        body: {id,message},
         headers: { 'content-type': 'application/json' },
       });
 
-      const charityId = 1
-      const amount = 10
-      const currency = 'THB'
-      const message = `Thanks for donate ${amount}!`
-      const expectedActions = [
-        {type : types.UPDATE_TOTAL_DONATE , amount},
-        {type : types.UPDATE_MESSAGE , message},
-      ];
-      
       const store = mockStore({ payments: [] });
-      return store.dispatch(paymentActions.savePayment(charityId,amount,currency)).then(() => {
+      store.dispatch(paymentActions.savePayment(charityId,amount,currency)).then(() => {
+        jest.runAllTimers()
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
