@@ -58,12 +58,13 @@ describe('Async Actions', () => {
     it('should create UPDATE_TOTAL_DONATE , ADD_MESSAGE and REMOVE_MESSAGE_BY_ID when savePayment', () => {
       const charityId = 1
       const id = 1;
+      const isErrorMessage = false;
       const amount = 10
       const currency = 'THB'
       const message = `Thanks for donate ${amount} ${currency}!`
       const expectedActions = [
         {type : types.UPDATE_TOTAL_DONATE , amount},
-        {type : types.ADD_MESSAGE , message , id},
+        {type : types.ADD_MESSAGE , message , id,isErrorMessage},
         {type : types.REMOVE_MESSAGE_BY_ID , id},
       ];
       
