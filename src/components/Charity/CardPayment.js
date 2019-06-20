@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import * as paymentActions from '../../redux/actions/paymentActions';
+import * as messageActions from '../../redux/actions/messageActions';
 import { bindActionCreators } from 'redux'
 import RadioButton from '../common/RadioButton';
 const StyledCardPayment = styled.div`
@@ -86,12 +87,16 @@ const StyledPayButton = styled.button`
   display: block;
   margin: 2em auto;
 `;
-const CardPayment = ({index,savePayment,currency,onClose}) => {
+const CardPayment = ({index,savePayment,addMessage,removeMessageById,currency,onClose}) => {
   const payments = [10, 20, 50, 100, 500];
   const [selectedAmount, setSelectedAmount] = useState(payments[0])
   const handlePay = () => {
     savePayment(index, selectedAmount, currency).catch(error => {
-      alert('Saving payments failed' + error);
+      const id = Date.now();
+      addMessage('Something went wrong please try again later.',id ,true);
+      setTimeout(function() {
+        removeMessageById(id)
+      }, 2000);
     })
   }
   return (
@@ -114,7 +119,11 @@ const CardPayment = ({index,savePayment,currency,onClose}) => {
   )
 }
 
-const mapDispatchToProps = (dispatch) => ({ savePayment: bindActionCreators(paymentActions.savePayment, dispatch)})
+const mapDispatchToProps = (dispatch) => ({ 
+  savePayment: bindActionCreators(paymentActions.savePayment, dispatch),
+  addMessage: bindActionCreators(messageActions.addMessage, dispatch),
+  removeMessageById: bindActionCreators(messageActions.removeMessageById, dispatch),
+})
 
 export default connect(null,mapDispatchToProps)(CardPayment)
 
