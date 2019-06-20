@@ -11,7 +11,7 @@ const StyledLabel = styled.label`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
+  
   @media (max-width: 1280px) {
     font-size: 20px;
   }
@@ -57,7 +57,8 @@ const StyledCheckmark = styled.span`
   width: 25px;
   background-color: #eee;
   border-radius: 50%;
-
+  -webkit-transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   /* Create the indicator (the dot/circle - hidden when not checked) */
   &:after {
     content: "";
