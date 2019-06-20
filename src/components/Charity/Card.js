@@ -7,6 +7,30 @@ const StyledCard = styled.div`
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px 10px 10px 10px;
   position: relative;
+  -webkit-animation: cardFadeIn 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1) ${props => (props.index/8+.02)+'s'};
+  animation: cardFadeIn 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1) ${props => (props.index/8+.02)+'s'};
+  opacity: 0;
+  top: 10px;
+  @-webkit-keyframes cardFadeIn {
+    0% {
+      opacity: 0;
+      top: 10px;
+    }
+    100% {
+      opacity: 1;
+      top: 0px;
+    }
+  }
+  @keyframes cardFadeIn {
+    0% {
+      opacity: 0;
+      top: 10px;
+    }
+    100% {
+      opacity: 1;
+      top: 0px;
+    }
+  }
 `;
 
 const StyledImg = styled.div`
@@ -61,9 +85,9 @@ const StyledNameLabel = styled.div`
   grid-template-columns: 1fr max-content;
 `;
 
-const Card = ({item,selectedCharity,setSelectCharity}) => {
+const Card = ({item,selectedCharity,setSelectCharity,index}) => {
   return (
-    <StyledCard>
+    <StyledCard index={index}>
       <StyledImg src={process.env.IMAGES_PATH + item.image}/>
       <StyledNameLabel>
         <StyledH3>{item.name}</StyledH3>

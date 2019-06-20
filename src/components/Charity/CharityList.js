@@ -19,7 +19,8 @@ const CharityList = ({charities}) => {
           <Card key={i} 
             item={item} 
             selectedCharity={selectedCharity} 
-            setSelectCharity={setSelectCharity} />)
+            setSelectCharity={setSelectCharity} 
+            index={i}/>)
       }
     </StyledCharityList>
   )

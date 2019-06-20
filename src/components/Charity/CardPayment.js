@@ -6,13 +6,33 @@ import { bindActionCreators } from 'redux'
 import RadioButton from '../common/RadioButton';
 const StyledCardPayment = styled.div`
   position: absolute;
-  top: 0;
+  top: 0px;
   width: 100%;
   height: 100%;
   background-color: rgba(255,255,255,0.95);
   padding: 15% 20px;
   box-sizing: border-box;
   border-radius: 10px;
+  opacity: 0;
+  -webkit-animation: cardPaymentFadeIn 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s;
+  animation: cardPaymentFadeIn 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s;
+  
+  @-webkit-keyframes cardPaymentFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes cardPaymentFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const StyledPaymentList = styled.div`
@@ -48,9 +68,15 @@ const StyledCloseButton = styled.span`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
+  -webkit-transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   &:hover{
     color: white;
+    background-color: #1B95F2;
+    border-color: #0062cc;
+  }
+  &:active {
+    color: rgba(255, 255, 255, 0.5);
     background-color: #1B95F2;
     border-color: #0062cc;
   }
