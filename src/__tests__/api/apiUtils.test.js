@@ -1,4 +1,4 @@
-import { handleResponse, handleError } from '../../../../src/api/apiUtils';
+import { handleResponse, handleError } from '../../api/apiUtils';
 
 describe('Async handleResponse', () => {
   it('should handle error 400', async () => {
