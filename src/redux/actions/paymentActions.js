@@ -50,7 +50,7 @@ export function savePayment(id, amount, currency) {
       .savePayment({ charitiesId: id, amount, currency })
       .then(function() {
         dispatch(updateTotalDonate(amount));
-        dispatch(updateMessage(`Thanks for donate ${amount}!`));
+        dispatch(updateMessage(`Thanks for donate ${amount} ${currency}!`));
         setTimeout(function() {
           dispatch(updateMessage(''));
         }, 2000);
