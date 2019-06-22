@@ -1,11 +1,22 @@
 import React,{useState} from 'react'
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import * as paymentActions from '../../redux/actions/paymentActions';
 import * as messageActions from '../../redux/actions/messageActions';
 import { bindActionCreators } from 'redux'
 import RadioButton from '../common/RadioButton';
-const StyledCardPayment = styled.div`
+import PropTypes from 'prop-types'
+
+const cardPaymentFadeInKeyframes = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
+export const StyledCardPayment = styled.div`
   position: absolute;
   top: 0px;
   width: 100%;
@@ -15,25 +26,8 @@ const StyledCardPayment = styled.div`
   box-sizing: border-box;
   border-radius: 10px;
   opacity: 0;
-  -webkit-animation: cardPaymentFadeIn 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s;
-  animation: cardPaymentFadeIn 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s;
-  
-  @-webkit-keyframes cardPaymentFadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  @keyframes cardPaymentFadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+  -webkit-animation: ${cardPaymentFadeInKeyframes} 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s;
+  animation: ${cardPaymentFadeInKeyframes} 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s;
 `;
 
 const StyledPaymentList = styled.div`
@@ -55,7 +49,7 @@ const StyledHeader = styled.h2`
   text-align: center;
 `;
 
-const StyledCloseButton = styled.span`
+export const StyledCloseButton = styled.span`
   position: absolute;
   top: 10px;
   right: 10px;
@@ -87,7 +81,7 @@ const StyledPayButton = styled.button`
   display: block;
   margin: 2em auto;
 `;
-const CardPayment = ({index,savePayment,addMessage,removeMessageById,currency,onClose}) => {
+export const CardPayment = ({index,savePayment,addMessage,removeMessageById,currency,onClose}) => {
   const payments = [10, 20, 50, 100, 500];
   const [selectedAmount, setSelectedAmount] = useState(payments[0])
   const handlePay = () => {
@@ -117,6 +111,24 @@ const CardPayment = ({index,savePayment,addMessage,removeMessageById,currency,on
       <StyledPayButton className='primary' onClick={() => handlePay()}>Pay</StyledPayButton>
     </StyledCardPayment>
   )
+}
+
+CardPayment.defaultProps ={
+  index : 0,
+  savePayment : () => {},
+  addMessage : () => {},
+  removeMessageById : () => {},
+  currency : '',
+  onClose : () => {},
+}
+
+CardPayment.propTypes={
+  index:PropTypes.number.isRequired,
+  savePayment: PropTypes.func.isRequired,
+  addMessage: PropTypes.func.isRequired,
+  removeMessageById: PropTypes.func.isRequired,
+  currency:PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = (dispatch) => ({ 

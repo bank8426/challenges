@@ -15,12 +15,6 @@
   "jest": {
     "setupFiles": [
       "./tools/testSetup.js"
-    ], 
-    "collectCoverageFrom": [
-        "src/**/*.{js,jsx}",
-        "!**/node_modules/**",
-        "!**/vendor/**",
-        "!**/coverage/**"
     ]
   },
   "dependencies": {

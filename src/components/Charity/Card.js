@@ -1,36 +1,29 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled,{keyframes} from 'styled-components';
 import CardPayment from './CardPayment';
+import PropTypes from 'prop-types'
+
+const cardFadeInKeyframe = keyframes`
+  0% {
+    opacity: 0;
+    top: 10px;
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+`
+
 const StyledCard = styled.div`
   margin: 0 10px 50px;
   background: #FFFFFF;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px 10px 10px 10px;
   position: relative;
-  -webkit-animation: cardFadeIn 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1) ${props => (props.index/8+.02)+'s'};
-  animation: cardFadeIn 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1) ${props => (props.index/8+.02)+'s'};
+  -webkit-animation: ${cardFadeInKeyframe} 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1) ${props => (props.index/8+.02)+'s'};
+  animation: ${cardFadeInKeyframe} 3s forwards cubic-bezier(0.2, 0.8, 0.2, 1) ${props => (props.index/8+.02)+'s'};
   opacity: 0;
   top: 10px;
-  @-webkit-keyframes cardFadeIn {
-    0% {
-      opacity: 0;
-      top: 10px;
-    }
-    100% {
-      opacity: 1;
-      top: 0px;
-    }
-  }
-  @keyframes cardFadeIn {
-    0% {
-      opacity: 0;
-      top: 10px;
-    }
-    100% {
-      opacity: 1;
-      top: 0px;
-    }
-  }
 `;
 
 const StyledImg = styled.div`
@@ -73,7 +66,7 @@ const StyledH3 = styled.h3`
   margin: 1em 0em 1em 1em;
 `;
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   margin: auto 1em auto 0;
   @media (max-width: 834px) and (min-width: 768px) {
     margin: 0.5em 0.5em 0.5em 0;
@@ -93,9 +86,39 @@ const Card = ({item,selectedCharity,setSelectCharity,index}) => {
         <StyledH3>{item.name}</StyledH3>
         <StyledButton className='primary' onClick={() => setSelectCharity(item.id) }>Donate</StyledButton>
       </StyledNameLabel>
-      { selectedCharity===item.id ? <CardPayment index={item.id} currency={item.currency} onClose={() => setSelectCharity(0)}/> : null }
+      { selectedCharity===item.id ? 
+        <CardPayment 
+          index={item.id} 
+          currency={item.currency} 
+          onClose={() => setSelectCharity(0)}/> 
+        : null }
     </StyledCard>
   )
 }
+
+Card.defaultProps ={
+  item : {
+    id : 0,
+    name : '',
+    image : '',
+    currency : '',
+  },
+  selectedCharity : -1,
+  setSelectCharity : () => {},
+  index : 0,
+}
+
+Card.propTypes={
+  item: PropTypes.shape({
+    id :PropTypes.number.isRequired,
+    name:PropTypes.string.isRequired,
+    image:PropTypes.string.isRequired,
+    currency:PropTypes.string.isRequired,
+  }),
+  selectedCharity : PropTypes.number.isRequired,
+  setSelectCharity : PropTypes.func.isRequired,
+  index : PropTypes.number.isRequired,
+}
+
 
 export default Card

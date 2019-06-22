@@ -1,0 +1,283 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardPayment it should display CharityList 1`] = `
+.c4 {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c4:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.c4 input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.c4 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.c4 .checkmark:after {
+  margin: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: white;
+}
+
+.c5 {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.c7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.c7:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.c6 {
+  display: inline;
+}
+
+.c0 {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.95);
+  padding: 15% 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  opacity: 0;
+  -webkit-animation: bcCCNc 0.2s forwards cubic-bezier(0.2,0.8,0.2,1) 0.05s;
+  -webkit-animation: bcCCNc 0.2s forwards cubic-bezier(0.2,0.8,0.2,1) 0.05s;
+  animation: bcCCNc 0.2s forwards cubic-bezier(0.2,0.8,0.2,1) 0.05s;
+}
+
+.c3 {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  padding: 0 100px;
+}
+
+.c2 {
+  text-align: center;
+}
+
+.c1 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 1px 8px;
+  color: #1b53f2;
+  font-weight: bold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.c1:hover {
+  color: white;
+  background-color: #1B95F2;
+  border-color: #0062cc;
+}
+
+.c1:active {
+  color: rgba(255,255,255,0.5);
+  background-color: #1B95F2;
+  border-color: #0062cc;
+}
+
+.c8 {
+  display: block;
+  margin: 2em auto;
+}
+
+@media (max-width:1280px) {
+  .c4 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width:1024px) {
+  .c4 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width:1280px) {
+  .c3 {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width:1024px) {
+  .c3 {
+    padding: 0px;
+  }
+}
+
+@media (max-width:768px) {
+  .c3 {
+    padding: 0 80px;
+  }
+}
+
+<div
+  className="c0"
+>
+  <span
+    className="c1"
+    onClick={[Function]}
+  >
+    X
+  </span>
+  <h2
+    className="c2"
+  >
+    Select the amount to donate (
+    
+    )
+  </h2>
+  <div
+    className="c3"
+  >
+    <label
+      className="c4"
+    >
+      <input
+        checked={true}
+        className="c5"
+        name="payment0"
+        onChange={[Function]}
+        type="radio"
+      />
+      <h3
+        className="c6"
+      >
+        10
+      </h3>
+      <span
+        className="checkmark c7"
+      />
+    </label>
+    <label
+      className="c4"
+    >
+      <input
+        checked={false}
+        className="c5"
+        name="payment0"
+        onChange={[Function]}
+        type="radio"
+      />
+      <h3
+        className="c6"
+      >
+        20
+      </h3>
+      <span
+        className="checkmark c7"
+      />
+    </label>
+    <label
+      className="c4"
+    >
+      <input
+        checked={false}
+        className="c5"
+        name="payment0"
+        onChange={[Function]}
+        type="radio"
+      />
+      <h3
+        className="c6"
+      >
+        50
+      </h3>
+      <span
+        className="checkmark c7"
+      />
+    </label>
+    <label
+      className="c4"
+    >
+      <input
+        checked={false}
+        className="c5"
+        name="payment0"
+        onChange={[Function]}
+        type="radio"
+      />
+      <h3
+        className="c6"
+      >
+        100
+      </h3>
+      <span
+        className="checkmark c7"
+      />
+    </label>
+    <label
+      className="c4"
+    >
+      <input
+        checked={false}
+        className="c5"
+        name="payment0"
+        onChange={[Function]}
+        type="radio"
+      />
+      <h3
+        className="c6"
+      >
+        500
+      </h3>
+      <span
+        className="checkmark c7"
+      />
+    </label>
+  </div>
+  <button
+    className="primary c8"
+    onClick={[Function]}
+  >
+    Pay
+  </button>
+</div>
+`;
