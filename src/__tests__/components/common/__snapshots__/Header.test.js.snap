@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display header 1`] = `
+.c0 {
+  background-color: #1B95F2;
+  margin: 0;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+<h1
+  className="c0"
+>
+  Tamboon React
+</h1>
+`;

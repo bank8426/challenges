@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import PropTypes from 'prop-types'
 /* The container */
 const StyledLabel = styled.label`
   display: block;
@@ -69,19 +69,33 @@ const StyledCheckmark = styled.span`
 const StyledH3 = styled.h3`
   display:inline;
 `
-const RadioButton = ({name,handleClick,displayMessage,checked}) => {
+const RadioButton = ({name,handleChange,displayMessage,checked}) => {
   return (
     <StyledLabel>
       <StyledRadioButton
         type="radio"
         name={name}
-        onChange={ () => {handleClick()}} 
+        onChange={ () => {handleChange()}} 
         checked={checked}
       />
       <StyledH3>{displayMessage}</StyledH3>
       <StyledCheckmark className="checkmark"></StyledCheckmark>
     </StyledLabel>
   )
+}
+
+RadioButton.defaultProps = {
+  name:'',
+  handleChange: () => {},
+  displayMessage :'',
+  checked:false,
+}
+
+RadioButton.propTypes={
+  name:PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  displayMessage :PropTypes.string.isRequired,
+  checked:PropTypes.bool.isRequired,
 }
 
 export default RadioButton

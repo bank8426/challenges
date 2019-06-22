@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display radio button 1`] = `
+.c0 {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.c0 input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.c0 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.c0 .checkmark:after {
+  margin: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: white;
+}
+
+.c1 {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.c3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.c3:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.c2 {
+  display: inline;
+}
+
+@media (max-width:1280px) {
+  .c0 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width:1024px) {
+  .c0 {
+    font-size: 18px;
+  }
+}
+
+<label
+  className="c0"
+>
+  <input
+    checked={false}
+    className="c1"
+    name=""
+    onChange={[Function]}
+    type="radio"
+  />
+  <h3
+    className="c2"
+  >
+    
+  </h3>
+  <span
+    className="checkmark c3"
+  />
+</label>
+`;
+
+exports[`should display radio with checked state 1`] = `
+.c0 {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c0:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.c0 input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.c0 input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.c0 .checkmark:after {
+  margin: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: white;
+}
+
+.c1 {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.c3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  -webkit-transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+  transition: 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+.c3:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.c2 {
+  display: inline;
+}
+
+@media (max-width:1280px) {
+  .c0 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width:1024px) {
+  .c0 {
+    font-size: 18px;
+  }
+}
+
+<label
+  className="c0"
+>
+  <input
+    checked={true}
+    className="c1"
+    name="radio1"
+    onChange={[Function]}
+    type="radio"
+  />
+  <h3
+    className="c2"
+  >
+    
+  </h3>
+  <span
+    className="checkmark c3"
+  />
+</label>
+`;

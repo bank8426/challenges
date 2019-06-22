@@ -1,11 +1,30 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import PropTypes from 'prop-types'
 
 const StyledContainer = styled.div`
   position: fixed;
   right: 0;
   top: 0;
 `;
+
+const messageInKeyframe = keyframes`
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+
+  }
+  20% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  80% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+`
 
 const StyledMessage = styled.p`
   color: white;
@@ -20,44 +39,9 @@ const StyledMessage = styled.p`
     margin-top: 0em;
   }
   visibility: visible;
-  -webkit-animation: messageIn 2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
-  animation: messageIn 2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  -webkit-animation: ${messageInKeyframe} 2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: ${messageInKeyframe} 2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
-  
-  @-webkit-keyframes messageIn {
-    0% {
-      -webkit-transform: translateX(100%);
-      transform: translateX(100%);
-      
-    }
-    20% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    80% {
-      opacity:1;
-    }
-    100% {
-      opacity:0;
-    }
-  }
-  @keyframes messageIn {
-    0% {
-      -webkit-transform: translateX(100%);
-      transform: translateX(100%);
-
-    }
-    20% {
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    80% {
-      opacity:1;
-    }
-    100% {
-      opacity:0;
-    }
-  }
 `;
 
 const Message = ({messages}) => {
@@ -73,6 +57,18 @@ const Message = ({messages}) => {
     </StyledContainer>
 
   )
+}
+
+Message.defaultProps = {
+  messages: [],
+}
+
+Message.propTypes={
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    id :PropTypes.number.isRequired,
+    message:PropTypes.string.isRequired,
+    isErrorMessage:PropTypes.bool.isRequired,
+  })),
 }
 
 export default Message

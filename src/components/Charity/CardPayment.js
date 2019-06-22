@@ -108,7 +108,7 @@ const CardPayment = ({index,savePayment,addMessage,removeMessageById,currency,on
           payments.map((amount, j) => (
             <RadioButton key={j}
               name={`payment${index}`} 
-              handleClick={() => {setSelectedAmount(amount)}} 
+              handleChange={() => {setSelectedAmount(amount)}} 
               displayMessage={amount} 
               checked={amount===selectedAmount}/>
           ))

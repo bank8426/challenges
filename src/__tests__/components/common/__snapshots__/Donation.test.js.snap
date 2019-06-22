@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should display total 0 THB 1`] = `
+.c0 {
+  margin: 1em;
+}
+
+<h3
+  className="c0"
+>
+  All donations: 
+  0
+   THB
+</h3>
+`;
+
+exports[`should display total 100 THB 1`] = `
+.c0 {
+  margin: 1em;
+}
+
+<h3
+  className="c0"
+>
+  All donations: 
+  100
+   THB
+</h3>
+`;
