@@ -94,7 +94,10 @@ RadioButton.defaultProps = {
 RadioButton.propTypes={
   name:PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
-  displayMessage :PropTypes.string.isRequired,
+  displayMessage :PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
   checked:PropTypes.bool.isRequired,
 }
 
