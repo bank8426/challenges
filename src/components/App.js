@@ -9,7 +9,8 @@ import Header from './common/Header';
 import Spinner from './common/Spinner';
 import CharityList from './Charity/CharityList';
 import { GlobalStyles } from '../styles/global';
-class App extends Component {
+import PropTypes from 'prop-types';
+export class App extends Component {
   componentDidMount() {
     const { charities, loadCharities , loadPayments } = this.props;
     if (charities.length === 0) {
@@ -43,20 +44,43 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    charities: state.charities,
-    isLoading: state.apiCallsInProgress > 0,
-    donate: state.donate,
-    messages: state.messages,
-  };
+App.defaultProps ={
+  charities: [],
+  isLoading: 0,
+  donate: 0,
+  messages: [],
+  loadCharities: () => {},
+  loadPayments: () => {},
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    loadCharities: bindActionCreators(charityActions.loadCharities, dispatch),
-    loadPayments: bindActionCreators(paymentActions.loadPayments, dispatch),
-  };
+App.propTypes={
+  charities: PropTypes.arrayOf(PropTypes.shape({
+    id :PropTypes.number.isRequired,
+    name:PropTypes.string.isRequired,
+    image:PropTypes.string.isRequired,
+    currency:PropTypes.string.isRequired,
+  })),
+  isLoading: PropTypes.number.isRequired,
+  donate: PropTypes.number.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    id :PropTypes.number.isRequired,
+    message:PropTypes.string.isRequired,
+    isErrorMessage:PropTypes.bool.isRequired,
+  })),
+  loadCharities: PropTypes.func.isRequired,
+  loadPayments: PropTypes.func.isRequired,
 }
+
+const mapStateToProps = (state) => ({
+  charities: state.charities,
+  isLoading: state.apiCallsInProgress > 0,
+  donate: state.donate,
+  messages: state.messages,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  loadCharities: bindActionCreators(charityActions.loadCharities, dispatch),
+  loadPayments: bindActionCreators(paymentActions.loadPayments, dispatch),
+})
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);
