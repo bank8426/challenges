@@ -46,11 +46,11 @@ export class App extends Component {
 
 App.defaultProps ={
   charities: [],
-  isLoading: 0,
+  isLoading: true,
   donate: 0,
   messages: [],
-  loadCharities: () => {},
-  loadPayments: () => {},
+  loadCharities: async () => await Promise.resolve(''),
+  loadPayments: async () => await Promise.resolve(''),
 }
 
 App.propTypes={
@@ -60,7 +60,7 @@ App.propTypes={
     image:PropTypes.string.isRequired,
     currency:PropTypes.string.isRequired,
   })),
-  isLoading: PropTypes.number.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   donate: PropTypes.number.isRequired,
   messages: PropTypes.arrayOf(PropTypes.shape({
     id :PropTypes.number.isRequired,
@@ -71,14 +71,14 @@ App.propTypes={
   loadPayments: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   charities: state.charities,
   isLoading: state.apiCallsInProgress > 0,
   donate: state.donate,
   messages: state.messages,
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   loadCharities: bindActionCreators(charityActions.loadCharities, dispatch),
   loadPayments: bindActionCreators(paymentActions.loadPayments, dispatch),
 })

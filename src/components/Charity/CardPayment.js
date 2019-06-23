@@ -77,7 +77,7 @@ export const StyledCloseButton = styled.span`
   }
 `;
 
-const StyledPayButton = styled.button`
+export const StyledPayButton = styled.button`
   display: block;
   margin: 2em auto;
 `;
@@ -115,11 +115,11 @@ export const CardPayment = ({index,savePayment,addMessage,removeMessageById,curr
 
 CardPayment.defaultProps ={
   index : 0,
-  savePayment : () => {},
-  addMessage : () => {},
-  removeMessageById : () => {},
   currency : '',
   onClose : () => {},
+  savePayment: async () => await Promise.resolve(''),
+  addMessage: async () => await Promise.resolve(''),
+  removeMessageById: async () => await Promise.resolve(''),
 }
 
 CardPayment.propTypes={

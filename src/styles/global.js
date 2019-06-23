@@ -56,9 +56,14 @@ export const GlobalStyles = createGlobalStyle`
       color: rgba(0,0,0,0.5);
       background-color: black;
       border-color: black;
+      outline: none;
     }
     @media (max-width: 1024px) and (min-width: 768px) {
       font-size: 0.8em;
+    }
+    
+    &:focus {
+      outline:0;
     }
   }
 

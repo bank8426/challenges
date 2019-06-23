@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it should display App 1`] = `
+Array [
+  <h1
+    className="sc-bxivhb lpgNEt"
+  >
+    Tamboon React
+  </h1>,
+  <div
+    className="sc-ifAKCX jpzCyY"
+  />,
+]
+`;
+
+exports[`should display charities when loading finish and have data 1`] = `
+Array [
+  <h1
+    className="sc-bxivhb lpgNEt"
+  >
+    Tamboon React
+  </h1>,
+  <h3
+    className="sc-htpNat jvEGAF"
+  >
+    All donations: 
+    0
+     THB
+  </h3>,
+  <div
+    className="sc-chPdSV gVUME"
+  >
+    <div
+      className="sc-jTzLTM dMGDxY"
+    >
+      <div
+        className="sc-fjdhpX hTYgkW"
+        src="undefinedbaan-kru-noi.jpg"
+      />
+      <div
+        className="sc-kAzzGY fLMWcz"
+      >
+        <h3
+          className="sc-jzJRlG cQAfVf"
+        >
+          Baan Kru Noi
+        </h3>
+        <button
+          className="primary sc-cSHVUG elibVm"
+          onClick={[Function]}
+        >
+          Donate
+        </button>
+      </div>
+    </div>
+    <div
+      className="sc-jTzLTM cTAeom"
+    >
+      <div
+        className="sc-fjdhpX jnEfle"
+        src="undefinedhabitat-for-humanity-thailand.jpg"
+      />
+      <div
+        className="sc-kAzzGY fLMWcz"
+      >
+        <h3
+          className="sc-jzJRlG cQAfVf"
+        >
+          Habitat for Humanity Thailand
+        </h3>
+        <button
+          className="primary sc-cSHVUG elibVm"
+          onClick={[Function]}
+        >
+          Donate
+        </button>
+      </div>
+    </div>
+    <div
+      className="sc-jTzLTM hFNVOF"
+    >
+      <div
+        className="sc-fjdhpX dMVtYd"
+        src="undefinedpaper-ranger.jpg"
+      />
+      <div
+        className="sc-kAzzGY fLMWcz"
+      >
+        <h3
+          className="sc-jzJRlG cQAfVf"
+        >
+          Paper Ranger
+        </h3>
+        <button
+          className="primary sc-cSHVUG elibVm"
+          onClick={[Function]}
+        >
+          Donate
+        </button>
+      </div>
+    </div>
+    <div
+      className="sc-jTzLTM jRZwSD"
+    >
+      <div
+        className="sc-fjdhpX gQQjjf"
+        src="undefinedmakhampom-theater.jpg"
+      />
+      <div
+        className="sc-kAzzGY fLMWcz"
+      >
+        <h3
+          className="sc-jzJRlG cQAfVf"
+        >
+          Makhampom Theater
+        </h3>
+        <button
+          className="primary sc-cSHVUG elibVm"
+          onClick={[Function]}
+        >
+          Donate
+        </button>
+      </div>
+    </div>
+    <div
+      className="sc-jTzLTM hVnDW"
+    >
+      <div
+        className="sc-fjdhpX fHcNRd"
+        src="undefinedthailand-association-of-the-blind.jpg"
+      />
+      <div
+        className="sc-kAzzGY fLMWcz"
+      >
+        <h3
+          className="sc-jzJRlG cQAfVf"
+        >
+          Thailand Association of the Blind
+        </h3>
+        <button
+          className="primary sc-cSHVUG elibVm"
+          onClick={[Function]}
+        >
+          Donate
+        </button>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="sc-bdVaJa cTeWxa"
+  />,
+]
+`;

@@ -11,7 +11,7 @@ const spinKeyframe = keyframes`
   }
 `
 
-const StyledSpinner = styled.div`
+export const StyledSpinner = styled.div`
   margin: 30px auto;
   font-size: 10px;
   position: relative;
