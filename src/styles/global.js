@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap');
   body {
-    @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap');
     font-family: 'Nunito Sans', sans-serif;
     color: #57586D;
     margin: 0;
