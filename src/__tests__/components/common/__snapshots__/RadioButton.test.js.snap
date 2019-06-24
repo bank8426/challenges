@@ -64,18 +64,6 @@ exports[`should display radio button 1`] = `
   display: inline;
 }
 
-@media (max-width:1280px) {
-  .c0 {
-    font-size: 20px;
-  }
-}
-
-@media (max-width:1024px) {
-  .c0 {
-    font-size: 18px;
-  }
-}
-
 <label
   className="c0"
 >
@@ -159,18 +147,6 @@ exports[`should display radio with checked state 1`] = `
 
 .c2 {
   display: inline;
-}
-
-@media (max-width:1280px) {
-  .c0 {
-    font-size: 20px;
-  }
-}
-
-@media (max-width:1024px) {
-  .c0 {
-    font-size: 18px;
-  }
 }
 
 <label

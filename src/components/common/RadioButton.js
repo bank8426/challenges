@@ -12,13 +12,6 @@ const StyledLabel = styled.label`
   -ms-user-select: none;
   user-select: none;
   
-  @media (max-width: 1280px) {
-    font-size: 20px;
-  }
-  @media (max-width: 1024px) {
-    font-size: 18px;
-  }
-
   /* On mouse-over, add a grey background color */
   &:hover input ~ .checkmark {
       background-color: #ccc;
@@ -49,6 +42,8 @@ const StyledRadioButton = styled.input`
     opacity: 0;
     cursor: pointer;
 `
+
+/* span to display styled that represent radio button*/
 const StyledCheckmark = styled.span`
   position: absolute;
   top: 0;
@@ -66,9 +61,15 @@ const StyledCheckmark = styled.span`
     display: none;
   }
 `
+
+/* h3 to display text for radio button*/
 const StyledH3 = styled.h3`
   display:inline;
 `
+
+/**
+ * label to display radio button with styled
+ */
 const RadioButton = ({name,handleChange,displayMessage,checked}) => {
   return (
     <StyledLabel>
@@ -92,12 +93,19 @@ RadioButton.defaultProps = {
 }
 
 RadioButton.propTypes={
+  /** string name of radio button*/
   name:PropTypes.string.isRequired,
+  /** function that will call when click on radio button*/
   handleChange: PropTypes.func.isRequired,
+  /** 
+  * display text that will show along radio button
+  * can be number or string
+  */
   displayMessage :PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]).isRequired,
+  /** boolean default check state for radio button */
   checked:PropTypes.bool.isRequired,
 }
 

@@ -27,18 +27,18 @@ it('should called componentDidMount', () => {
 
 it('should alert when call loadCharities fail', async () => {
   const asyncMockFn = jest.fn().mockRejectedValue(new Error('Async error'));
-  const mockFn2 = jest.fn();
-  window.alert = mockFn2();
+  const mockFn = jest.fn();
+  window.alert = mockFn();
   shallow(<App loadCharities={ async () => await asyncMockFn() }/>);
-  expect(mockFn2).toHaveBeenCalledTimes(1);
+  expect(mockFn).toHaveBeenCalledTimes(1);
 });
 
 it('should alert when call loadPayments fail', async () => {
   const asyncMockFn = jest.fn().mockRejectedValue(new Error('Async error'));
-  const mockFn2 = jest.fn();
-  window.alert = mockFn2();
+  const mockFn = jest.fn();
+  window.alert = mockFn();
   shallow(<App loadPayments={ async () => await asyncMockFn() }/>);
-  expect(mockFn2).toHaveBeenCalledTimes(1);
+  expect(mockFn).toHaveBeenCalledTimes(1);
 });
 
 it('should show Spinner when it loading state', () => {

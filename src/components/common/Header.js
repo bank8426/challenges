@@ -7,6 +7,10 @@ const StyledHeader = styled.h1`
   color: white;
   text-align:center;
 `;
+
+/**
+ * h1 to display app header
+ */
 const Header = () => {
   return (
     <StyledHeader>

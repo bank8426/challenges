@@ -11,6 +11,7 @@ exports[`it should display spinner 1`] = `
   border-left-color: #1b95f2;
   width: 3em;
   height: 3em;
+  overflow: hidden;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -19,7 +20,6 @@ exports[`it should display spinner 1`] = `
   -webkit-animation: hmHMaM 1.1s infinite linear;
   -webkit-animation: hmHMaM 1.1s infinite linear;
   animation: hmHMaM 1.1s infinite linear;
-  overflow: hidden;
 }
 
 <div

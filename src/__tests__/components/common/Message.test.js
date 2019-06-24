@@ -8,7 +8,6 @@ it('should display message', () => {
   expect(tree).toMatchSnapshot()
 })
 
-
 it('should display red message for error message', () => {
   const initMessages =  [{id : 1,message: 'Error',isErrorMessage :true}]
   const tree = renderer.create(<Message messages={initMessages} />).toJSON()

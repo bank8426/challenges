@@ -6,6 +6,9 @@ const StyledDonation = styled.h3`
   margin: 1em;
 `;
 
+/**
+ * h3 to display donation amounts.
+ */
 const Donation = ({donate}) => {
   return (
     <StyledDonation>
@@ -19,6 +22,7 @@ Donation.defaultProps = {
 }
 
 Donation.propTypes={
+  /** amount of donation to be display */
   donate : PropTypes.number.isRequired,
 }
 

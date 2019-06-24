@@ -8,23 +8,22 @@ exports[`should display blue message for normal message 1`] = `
 }
 
 .c1 {
-  color: white;
-  margin: 1em 1em 0;
-  font-weight: bold;
-  font-size: 16px;
-  text-align: center;
   background: #2F80ED;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+  color: white;
+  margin: 0 1em 0;
   padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
   visibility: visible;
+  overflow: hidden;
   -webkit-animation: bfJSmJ 2s forwards cubic-bezier(0.2,0.8,0.2,1);
   -webkit-animation: bfJSmJ 2s forwards cubic-bezier(0.2,0.8,0.2,1);
   animation: bfJSmJ 2s forwards cubic-bezier(0.2,0.8,0.2,1);
-  overflow: hidden;
 }
 
-.c1:nth-child(n+2) {
-  margin-top: 0em;
+.c1:nth-child(1) {
+  margin-top: 1em;
 }
 
 <div
@@ -58,23 +57,22 @@ exports[`should display red message for error message 1`] = `
 }
 
 .c1 {
-  color: white;
-  margin: 1em 1em 0;
-  font-weight: bold;
-  font-size: 16px;
-  text-align: center;
   background: #EB5757;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+  color: white;
+  margin: 0 1em 0;
   padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
   visibility: visible;
+  overflow: hidden;
   -webkit-animation: bfJSmJ 2s forwards cubic-bezier(0.2,0.8,0.2,1);
   -webkit-animation: bfJSmJ 2s forwards cubic-bezier(0.2,0.8,0.2,1);
   animation: bfJSmJ 2s forwards cubic-bezier(0.2,0.8,0.2,1);
-  overflow: hidden;
 }
 
-.c1:nth-child(n+2) {
-  margin-top: 0em;
+.c1:nth-child(1) {
+  margin-top: 1em;
 }
 
 <div

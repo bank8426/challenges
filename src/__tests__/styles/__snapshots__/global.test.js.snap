@@ -34,6 +34,15 @@ exports[`should have global styles 1`] = `
     }
   }
 
+  label{
+    @media (max-width: 1280px) {
+    font-size: 20px;
+    }
+    @media (max-width: 1024px) {
+      font-size: 18px;
+    }
+  }
+
   button {
     background: white;
     border: 2px solid;
@@ -47,6 +56,7 @@ exports[`should have global styles 1`] = `
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    
     &:hover 
     {
       color: white;
@@ -59,12 +69,13 @@ exports[`should have global styles 1`] = `
       border-color: black;
       outline: none;
     }
-    @media (max-width: 1024px) and (min-width: 768px) {
-      font-size: 0.8em;
-    }
     
     &:focus {
       outline:0;
+    }
+
+    @media (max-width: 1024px) and (min-width: 768px) {
+      font-size: 0.8em;
     }
   }
 

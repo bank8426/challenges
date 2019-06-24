@@ -33,6 +33,15 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  label{
+    @media (max-width: 1280px) {
+    font-size: 20px;
+    }
+    @media (max-width: 1024px) {
+      font-size: 18px;
+    }
+  }
+
   button {
     background: white;
     border: 2px solid;
@@ -46,6 +55,7 @@ export const GlobalStyles = createGlobalStyle`
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    
     &:hover 
     {
       color: white;
@@ -58,12 +68,13 @@ export const GlobalStyles = createGlobalStyle`
       border-color: black;
       outline: none;
     }
-    @media (max-width: 1024px) and (min-width: 768px) {
-      font-size: 0.8em;
-    }
     
     &:focus {
       outline:0;
+    }
+
+    @media (max-width: 1024px) and (min-width: 768px) {
+      font-size: 0.8em;
     }
   }
 
