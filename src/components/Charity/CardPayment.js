@@ -1,10 +1,11 @@
-import React,{useState} from 'react'
+import React,{Component} from 'react'
 import { connect } from 'react-redux';
 import styled, { keyframes } from 'styled-components';
 import * as paymentActions from '../../redux/actions/paymentActions';
 import * as messageActions from '../../redux/actions/messageActions';
 import { bindActionCreators } from 'redux'
 import RadioButton from '../common/RadioButton';
+import Spinner from '../common/Spinner';
 import PropTypes from 'prop-types'
 
 /** keyframes to make cardPayment appear */
@@ -98,41 +99,62 @@ export const StyledPayButton = styled.button`
  * Have local state to handle selected payment amount.
  * Dispatch savePayment when user click pay.
  */
-export const CardPayment = ({index,savePayment,addMessage,removeMessageById,currency,onClose}) => {
-  const payments = [10, 20, 50, 100, 500];
-  /** hook for set selectedAmount*/
-  const [selectedAmount, setSelectedAmount] = useState(payments[0])
-  /** 
-   * function to dispatch savePayment action.
-   * When savePayment fail it will dispatch to display error message
-   * */
-  const handlePay = () => {
-    savePayment(index, selectedAmount, currency).catch(error => {
-      const id = Date.now();
-      addMessage('Something went wrong please try again later.',id ,true);
-      setTimeout(function() {
-        removeMessageById(id)
-      }, 2000);
-    })
+export class CardPayment extends Component {
+  state = {
+    payments : [10, 20, 50, 100, 500],
+    /**number of amount that user select */
+    selectedAmount: 10,
+    /**boolean indicate processing status of payment*/
+    isProcessing: false,
   }
-  return (
-    <StyledCardPayment>
-      <StyledCloseButton onClick={() => onClose()}>X</StyledCloseButton>
-      <StyledHeader>Select the amount to donate ({currency})</StyledHeader>
-      <StyledSelectPaymentList>
+
+  render() {
+    const {index,currency,onClose} = this.props;
+    const {selectedAmount,isProcessing,payments} =  this.state;
+    /** handle local state for selectedAmount*/
+    const setSelectedAmount = (selectedAmount) => this.setState({selectedAmount})
+    /** handle local state for setIsProcessing*/
+    const setIsProcessing = (isProcessing) => this.setState({isProcessing})
+    /** 
+    * function to dispatch savePayment action.
+    * When savePayment fail it will dispatch to display error message
+    * */
+    const handlePay = () => {
+      const {index,savePayment,addMessage,removeMessageById,currency} = this.props;
+      setIsProcessing(true)
+      savePayment(index, selectedAmount, currency).then(function() {
+        setIsProcessing(false)
+      }).catch(error => {
+        const id = Date.now();
+        addMessage('Something went wrong please try again later.',id ,true);
+        setTimeout(function() {
+          removeMessageById(id)
+        }, 2000);
+        setIsProcessing(false)
+      })
+    }
+    return (
+      <StyledCardPayment>
+        <StyledCloseButton onClick={() => onClose()}>X</StyledCloseButton>
+        <StyledHeader>Select the amount to donate ({currency})</StyledHeader>
+        <StyledSelectPaymentList>
+          {
+            payments.map((amount, j) => (
+              <RadioButton key={j}
+                name={`payment${index}`} 
+                handleChange={() => {setSelectedAmount(amount)}} 
+                displayMessage={amount} 
+                checked={amount===selectedAmount}/>
+            ))
+          }
+        </StyledSelectPaymentList>
         {
-          payments.map((amount, j) => (
-            <RadioButton key={j}
-              name={`payment${index}`} 
-              handleChange={() => {setSelectedAmount(amount)}} 
-              displayMessage={amount} 
-              checked={amount===selectedAmount}/>
-          ))
+          isProcessing ? <Spinner/>
+            : <StyledPayButton className='primary' onClick={() => handlePay()}>Pay</StyledPayButton>
         }
-      </StyledSelectPaymentList>
-      <StyledPayButton className='primary' onClick={() => handlePay()}>Pay</StyledPayButton>
-    </StyledCardPayment>
-  )
+      </StyledCardPayment>
+    )
+  }
 }
 
 CardPayment.defaultProps ={
