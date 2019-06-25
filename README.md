@@ -17,10 +17,27 @@ API Server site : https://db-heroku-for-challenge.herokuapp.com/
 <br />
 
 # How to run or test app?
-### Fist, Install using [`npm`](https://www.npmjs.com/):
+## First, Install using [`npm`](https://www.npmjs.com/):
 ```bash
 npm install
 ```
+## Config Images and API Path
+In <code>webpack.config.dev.js</code> and <code>webpack.config.prod.js</code><br/>
+There will be <code>IMAGES_PATH</code> and <code>API_PATH</code><br/>
+You can set <code>URL</code> there.<br/>
+OR <br/>
+use these command in commandline<br/>
+### Windows
+```bash
+set IMAGES_PATH='your-image-path';
+set API_PATH='your-api-path';
+```
+### Linux or other unix based system
+```bash
+export IMAGES_PATH='your-image-path'
+export API_PATH='your-api-path'
+```
+
 ## For development
 ### Run on local (Default client: localhost:3000, server: localhost:3001)
 ```bash
@@ -86,5 +103,130 @@ npm run build
   </li>
   <li>
     <code>Verify production build work</code> by deploy on Netlify and Heroku.
+  </li>
+</ul>
+
+## What have done by days. 
+<ul>
+  <li>
+    <b>Day 1</b>
+    <ul>
+      <li>
+        Update version package,babelrc. And start design in Figma.(not finish)
+      </li>
+    </ul>
+  </li>
+  <li>
+    <b>Day 2</b>
+    <ul>
+      <li>
+        Finish design.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <b>Day 3</b>
+    <ul>
+      <li>
+        Refactor seperate redux, api call from main code to have their own folder.
+      </li>
+      <li>
+        Add API header for handlePay, clean db.json
+      </li>
+      <li>
+        Show charity image
+      </li>
+      <li>
+        Add IMAGES_PATH to webpack.config
+      </li>
+    </ul>
+  </li>
+  <li>
+    <b>Day 4</b>
+    <ul>
+      <li>
+        Add unit test and mock data for redux
+      </li>
+      <li>
+        jsDoc for redux and api<br>
+      </li>
+      <li>
+        Seperate components from main code
+      </li>
+    </ul>
+  </li>
+  <li>
+    <b>Day 5</b>
+    <ul>
+      <li>
+        Styled components and make it responsive
+      </li>
+      <li>
+        Add font and GlobalStyles
+      </li>
+    </ul>
+  <li>
+    <b>Day 6</b>
+    <ul>
+      <li>
+        Add animation for components.
+       </li>
+      <li>
+        Test coverage 100% for redux, api, helper.
+       </li>
+      <li>
+        Make Message component handle multiple messages also error message.
+      </li>
+    </ul>
+  <li>
+    <b>Day 7</b>
+    <ul>
+      <li>
+        Rewatch about testing react in pluralsight again.
+      </li>
+      <li>
+        Add test and propstype for components but not finish yet.
+      </li>
+    </ul>
+  <li>
+    <b>Day 8</b>
+    <ul>
+      <li>
+        add test App, CardPayment, now all code coverage 100
+      </li>
+    </ul>
+  <li>
+    <b>Day 9</b>
+    <ul>
+      <li>
+        Update webpack config for dev,prod
+      </li>
+      <li>
+        Add comment and clean code, update test
+      </li>
+      <li>
+        Show spinner when CardPayment process
+      </li>
+      <li>
+        Site live on netlify at https://serene-goldberg-d32da8.netlify.com/ 
+      </li>
+      <li>
+        Server on heroku
+      </li>
+      <li>
+        Fix globalstyle not show in production
+      </li>
+    </ul>
+  </li>
+  <li>
+    <b>Day 10</b>
+    <ul>
+      <li>
+        Update README.md
+      </li>
+      <li>
+        Export git-patch
+      </li>
+    </ul>
   </li>
 </ul>
