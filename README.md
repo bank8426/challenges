@@ -1,67 +1,90 @@
-<p align="center">
-  <a href='https://www.omise.co'>
-    <img src="https://cdn.omise.co/assets/omise-logo/omise-wordmark.png" width="300" />
-  </a>
-</p>
+**Tamboon React** is a code challenge for frontend developer.
+<br />
+## Online Demo (Netlify + Heroku)
+Client site : https://serene-goldberg-d32da8.netlify.com/<br />
+API Server site : https://db-heroku-for-challenge.herokuapp.com/
+
+## Sample Screen Shot
+<p>-When app loading</p>
+<img src="https://drive.google.com/uc?id=1u4hQbkozf-yrSZ3DFUA2M0AbC7uNoQCN" width="600" alt="loading"/>
+<br />
+<br />
+<p>-Select charity and make payment</p>
+<img src="https://drive.google.com/uc?id=1fud48W0zLHaZDQV92442EJo7_yARDH1-" width="600" alt="succes-payment"/>
+<br />
+<p>-When make payment fail</p>
+<img src="https://drive.google.com/uc?id=1sW0x6OupvQ6dkastfmqSmsYVndNn0ObH" width="600" alt="fail-payment"/>
 <br />
 
+# How to run or test app?
+### Fist, Install using [`npm`](https://www.npmjs.com/):
+```bash
+npm install
+```
+## For development
+### Run on local (Default client: localhost:3000, server: localhost:3001)
+```bash
+npm run start-dev
+```
 
-**Tamboon React** is a code challenge for frontend developer.
+### Run the tests
+```bash
+jest
+```
 
-## Scenario
-Once upon a time.. nope!  
-So here, you have been temporarily hired by Omise and assigned to work on the charity donation project which the previously assigned front-end developer and designer got the urgent matters to solve, so they will not be able to finish the project on time..
+### Run the tests with coverage report
+```bash
+jest --coverage
+```
 
-Fortunately, the API server is already done. You will need to grab on the requirements and complete the project while ensuring the application to have great engineering and well-design ✨
+## For production
+### Build production (Will auto run test before build)
+```bash
+npm run build
+```
 
-![tamboon-react-screenshot](https://git.omise.co/storage/user/56/files/b407c6c4-ad09-11e7-8792-dc5b468333df)
-
-## Mission
-Well, grap your guns, stock up your food and bring down your armor. We gonna need it for tonight!  
-**Here are the tasks you must complete:**
-
-- [ ] Complete the application according to the design (image above).
-- [ ] Complete these features that are not in the design (you have freedom to design and position to display).
-  - Display all donation amount.
-  - Display a message when paid.
-- [ ] Make the donation feature works correctly.
-  - Amount in all donations should be displayed correctly despite users close and come back later.
-  - Database (db.json) should have the new valid data when paid.
-- [ ] Refactor the code to be more readable and enhance reusability.
-- [ ] Use only [styled-component](https://www.styled-components.com/) for styling part.
-- [ ] Write a nice commit message and order it well.
-- [ ] Display well in most modern browser (Google Chrome, Safari, Firefox).
-
-#### Bonus
-- [ ] Supporting different screen sizes (responsive).
-- [ ] Write helpers or components unit tests with [jest](https://facebook.github.io/jest/).
-
-## Rules
-Desire to win the war? Well, to make it a little more fun, please remember that
-
-**You cannot:**
-- Change existing behaviors.
-- Change the API server.
-- Change from JS to other languages.
-
-**In the other hand, feel free to:**
-- Improve the design to have better UI and UX.
-- Re-organize the codebase.
-- Create new modules/methods/components.
-- Modify existing code.
-- Add new packages.
-- Update `webpack` config.
-- Take reasonable time to complete the challenge, no need to rush.
-- Edit `README.md` to add documentation. What have you done or how to run or test your app?
-
-
-**Note**: You can see design inside folder `resources`.
-
-
-## Surprise us!
-
-Please remember that your patch must consist of multiple separate commits. Your commit message must communicate clearly what has been done in each commit.
-
-If you notice more bugs in the original implementation you can add fixes for those as well. You won't be penalized if you don't. However we ask you not to add more features than the one given in the mission list.
-
-Let's rock! :metal:
+## What have done. 
+<ul>
+  <li>
+    Update <code>webpack</code>. Webpack now have config files for <code>Development</code> and <code>Production</code>
+  </li>
+  <li>
+    Update <code>babel</code> and <code>package.json</code> to new version.
+  </li>
+  <li>
+    Design on <code>Figma</code>. ( I know it's not in mission. But i want to have clear design first.)<br />
+     Also redesign and add some features. But to make it as same as original, those things didn't get implemented<br />
+     You can check out here :<br />
+    <ul>
+      <li>
+        UI : https://www.figma.com/file/PVdrvCyjaNgv5AjKzwyHSESh/Gu-Tamboon?node-id=0%3A1
+      </li>
+      <li>
+        Component , typo , color : https://www.figma.com/file/PVdrvCyjaNgv5AjKzwyHSESh/Gu-Tamboon?node-id=1%3A6
+      </li>
+    </ul>
+  </li>
+  <li>
+    Fix <code>API</code> part (add API header for handlePay), clean db.json
+  </li>
+  <li>
+    Refactor code ,seperate <code>Redux</code> and <code>Components</code> from <code>App</code>.
+  </li>
+  <li>
+    Add <code>jsDoc</code> and <code>comments</code> for each files.
+  </li>
+  <li>
+    Use <code>Styled-component</code> for styling and make resposive, also has global styles for reuse purpose and add font.<br />
+    Some componets has animation.
+  </li>
+  <li>
+    Use <code>Jest, Enzyme, React-test-library and mock data</code> for testing.<br>
+    Make test <code>coverage 100%</code> ( Just follow jest coverage report.)<br>
+  </li>
+  <li>
+    Make <code>Message</code> component to handle multiple messages and display like <code>toast</code>
+  </li>
+  <li>
+    <code>Verify production build work</code> by deploy on Netlify and Heroku.
+  </li>
+</ul>
